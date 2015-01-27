@@ -3,9 +3,66 @@
 class Dv_Complexworld_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction() {
-        $weblog2 = Mage::getModel('complexworld/eavblogpost');
-        $weblog2->load(1);
-        var_dump($weblog2);
+
+      /*  array("eq"=>'n2610')
+        WHERE (e.sku = 'n2610')
+
+        array("neq"=>'n2610')
+        WHERE (e.sku != 'n2610')
+
+        array("like"=>'n2610')
+        WHERE (e.sku like 'n2610')
+
+        array("nlike"=>'n2610')
+        WHERE (e.sku not like 'n2610')
+
+        array("is"=>'n2610')
+        WHERE (e.sku is 'n2610')
+
+        array("in"=>array('n2610'))
+        WHERE (e.sku in ('n2610'))
+
+        array("nin"=>array('n2610'))
+        WHERE (e.sku not in ('n2610'))
+
+        array("notnull"=>true)
+        WHERE (e.sku is NOT NULL)
+
+        array("null"=>true)
+        WHERE (e.sku is NULL)
+
+        array("gt"=>'n2610')
+        WHERE (e.sku > 'n2610')
+
+        array("lt"=>'n2610')
+        WHERE (e.sku < 'n2610')
+
+        array("gteq"=>'n2610')
+        WHERE (e.sku >= 'n2610')
+
+        array("moreq"=>'n2610') //a weird, second way to do greater than equal
+        WHERE (e.sku >= 'n2610')
+
+        array("lteq"=>'n2610')
+        WHERE (e.sku <= 'n2610')
+
+        array("finset"=>array('n2610'))
+        WHERE (find_in_set('n2610',e.sku))
+
+        array('from'=>'10','to'=>'20')
+        WHERE e.sku >= '10' and e.sku <= '20' */
+
+        $filter_a = array('like'=>'a%');
+        $filter_b = array('like'=>'b%');
+
+        var_dump(
+        Mage::getModel('complexworld/eavblogpost')
+            ->getCollection()
+            ->addFieldToFilter('title', array($filter_a, $filter_b))
+            ->getSelect()
+        );
+
+
     }
 
     public function populateEntriesAction() {
