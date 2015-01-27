@@ -1,0 +1,34 @@
+<config>
+    <frontend>
+        <routers>
+            <weblog>
+                <use>standard</use>
+                <args>
+                    <module>Dv_Weblog</module>
+                    <frontName>weblog</frontName>
+                </args>
+            </weblog>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+            <weblog>
+                <class>Dv_Weblog_Model</class>
+                    <!--
+                    need to create our own resource, can't just
+                    use core_resource
+                    -->
+                <resourceModel>weblog_resource</resourceModel>
+            </weblog>
+
+            <weblog_resource>
+                <class>Dv_Weblog_Model_Resource</class>
+                <entities>
+                    <blogpost>
+                        <table>blog_posts</table>
+                    </blogpost>
+                </entities>
+            </weblog_resource>
+        </models>
+    </global>
+</config>
