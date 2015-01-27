@@ -1,4 +1,9 @@
 <config>
+    <modules>
+        <Dv_Weblog>
+            <version>0.2.0</version>
+        </Dv_Weblog>
+    </modules>
     <frontend>
         <routers>
             <weblog>
@@ -30,5 +35,14 @@
                 </entities>
             </weblog_resource>
         </models>
+
+        <resources>
+            <weblog_setup>
+                <setup>
+                    <module>Dv_Weblog</module>
+                    <class>Dv_Weblog_Model_Resource_Setup</class>
+                </setup>
+            </weblog_setup>
+        </resources>
     </global>
 </config>
